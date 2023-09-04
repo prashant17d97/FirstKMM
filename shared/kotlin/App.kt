@@ -1,6 +1,5 @@
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -10,10 +9,7 @@ import theme.AppTheme
 @Composable
 fun App() {
     AppTheme(darkTheme = isSystemInDarkTheme(), dynamicColor = true) {
-        Surface(
-            modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colorScheme.background,
-        ) {
+        Surface(modifier = Modifier.fillMaxSize()) {
             Component()
         }
     }
