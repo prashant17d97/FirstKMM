@@ -90,7 +90,7 @@ fun GradiantWithImageColumn(
             modifier = modifier
                 .fillMaxSize()
                 .background(
-                    brush = Brush.linearGradient(
+                    brush = Brush.verticalGradient(
                         colors = colors
                     )
                 ),
