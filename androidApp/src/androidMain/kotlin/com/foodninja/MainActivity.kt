@@ -1,4 +1,4 @@
-package com.myapplication
+package com.foodninja
 
 import MainView
 import android.os.Bundle
