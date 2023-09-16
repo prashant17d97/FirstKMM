@@ -39,7 +39,7 @@ actual fun AppTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = vigaRegular(),
         content = content
     )
 

@@ -18,9 +18,10 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import core.Resource
+import core.ResourcePath
+import core.ResourcePath.Drawable.contentDescription
+import core.Size
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 
@@ -38,20 +39,23 @@ fun Splash() {
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Image(
-                painter = painterResource(res = Resource.Logo),
-                modifier = Modifier.size(width = 175.dp, height = 139.dp),
-                contentDescription = "MainLogo"
+                painter = painterResource(res = ResourcePath.Drawable.logo),
+                modifier = Modifier.size(
+                    width = Size.logoHeight,
+                    height = Size.logoHeight
+                ),
+                contentDescription = ResourcePath.Drawable.logo.contentDescription
             )
             Text(
-                text = "FoodNinja",
-                style = MaterialTheme.typography.headlineLarge.copy(
+                text = ResourcePath.String.appName,
+                style = MaterialTheme.typography.displayLarge.copy(
                     color = MaterialTheme.colorScheme.primary,
                     fontSize = 40.sp,
                     fontWeight = FontWeight.SemiBold
                 )
             )
             Text(
-                text = "Deliver Favorite Food",
+                text = ResourcePath.String.appSlogan,
                 style = MaterialTheme.typography.bodyLarge.copy(
                     fontSize = 13.sp,
                     fontWeight = FontWeight.SemiBold
@@ -80,10 +84,10 @@ fun GradiantWithImageColumn(
         contentAlignment = Alignment.TopCenter
     ) {
         Image(
-            painter = painterResource(Resource.SplashPattern),
+            painter = painterResource(ResourcePath.Drawable.splashPattern),
             modifier = Modifier.fillMaxWidth(),
             contentScale = ContentScale.FillWidth,
-            contentDescription = "Splash"
+            contentDescription = ResourcePath.Drawable.splashPattern.contentDescription
         )
 
         Column(

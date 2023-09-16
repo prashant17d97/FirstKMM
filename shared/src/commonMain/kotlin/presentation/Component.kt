@@ -38,7 +38,7 @@ fun Component() {
         }
         AnimatedVisibility(showImage) {
             Image(
-                painterResource("compose-multiplatform.xml"), null
+                painterResource("resources/drawables/compose_multiplatform.xml"), null
             )
         }
     }

@@ -18,6 +18,7 @@ kotlin {
         }
     }
 
+
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -55,8 +56,8 @@ kotlin {
             dependencies {
                 api("androidx.activity:activity-compose:1.7.2")
                 api("androidx.appcompat:appcompat:1.6.1")
-                api("androidx.core:core-ktx:1.10.1")
-                api("androidx.compose.ui:ui-tooling-preview:1.5.0")
+                api("androidx.core:core-ktx:1.12.0")
+                api("androidx.compose.ui:ui-tooling-preview:1.5.1")
             }
         }
         val iosX64Main by getting
@@ -73,7 +74,7 @@ kotlin {
 
 android {
     compileSdk = (findProperty("android.compileSdk") as String).toInt()
-    namespace = "com.myapplication.common"
+    namespace = "com.myapplication.firstkmm"
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     sourceSets["main"].res.srcDirs("src/androidMain/res")
@@ -90,7 +91,6 @@ android {
         jvmToolchain(17)
     }
 }
-
 object Dependencies {
     object Kotlinx {
         const val coroutines =
@@ -98,7 +98,7 @@ object Dependencies {
     }
 
     object Preview {
-        const val preview = "org.jetbrains.compose.ui:ui-tooling-preview:${Versions.Preview.previewVersion}"
+        const val preview = "org.jetbrains.compose.ui:ui-tooling-preview:${Versions.composeVersion}"
     }
 
     object Ktor {
@@ -117,7 +117,7 @@ object Dependencies {
     }
 
     object Coil {
-        const val compose = "io.coil-kt:coil-compose:${Versions.Coil.coilVersion}"
+        const val coil = "io.coil-kt:coil-compose:${Versions.Coil.coilVersion}"
     }
 
     // MARK: - Versions -
@@ -138,8 +138,7 @@ object Dependencies {
             const val coilVersion = "2.2.2"
         }
 
-        object Preview {
-            const val previewVersion = "1.5.0"
-        }
+        const val composeVersion = "1.5.1"
+
     }
 }
