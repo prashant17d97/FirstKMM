@@ -1,7 +1,6 @@
 package presentation
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -60,7 +59,8 @@ object CommonElements {
             ) {
                 Text(
                     text = text,
-                    color = Color.White.takeIf { isSystemInDarkTheme() } ?: Color.Black)
+                    style = MaterialTheme.typography.bodyLarge
+                )
             }
         }
     }

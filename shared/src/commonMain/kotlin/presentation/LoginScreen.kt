@@ -38,6 +38,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import core.NavHostController
+import core.ResourcePath
 import core.ResourcePath.Drawable.contentDescription
 import core.ResourcePath.Drawable.iconFacebook
 import core.ResourcePath.Drawable.iconGoogle
@@ -84,7 +85,8 @@ fun LoginScreen(navHostController: NavHostController) {
         )
         Spacer(modifier = Modifier.height(10.dp))
 
-        Text(text = "Login To Your Account".takeIf { isLogin } ?: "Sign Up For Free",
+        Text(text = ResourcePath.String.loginToAccount.takeIf { isLogin }
+            ?: ResourcePath.String.signUpFree,
             style = MaterialTheme.typography.headlineSmall)
 
         Column(
@@ -99,7 +101,7 @@ fun LoginScreen(navHostController: NavHostController) {
                         contentDescription = iconProfile.contentDescription
                     )
                 },
-                    placeholder = { Text(text = "Name") },
+                    placeholder = { Text(text = ResourcePath.String.name) },
                     singleLine = true,
                     keyboardOptions = KeyboardOptions(
                         capitalization = KeyboardCapitalization.Words,
@@ -127,7 +129,7 @@ fun LoginScreen(navHostController: NavHostController) {
                     contentDescription = iconMail.contentDescription
                 )
             },
-                placeholder = { Text(text = "Email") },
+                placeholder = { Text(text = ResourcePath.String.email) },
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Email, imeAction = ImeAction.Next
@@ -158,7 +160,7 @@ fun LoginScreen(navHostController: NavHostController) {
                             isVisible = !isVisible
                         })
                 },
-                placeholder = { Text(text = "Password") },
+                placeholder = { Text(text = ResourcePath.String.password) },
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Password, imeAction = ImeAction.Done
@@ -189,7 +191,10 @@ fun LoginScreen(navHostController: NavHostController) {
                 ), horizontalAlignment = Alignment.CenterHorizontally
             ) {
 
-                Text(text = "Or continue with", style = MaterialTheme.typography.bodyLarge)
+                Text(
+                    text = ResourcePath.String.continueWith,
+                    style = MaterialTheme.typography.bodyLarge
+                )
 
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
@@ -213,7 +218,10 @@ fun LoginScreen(navHostController: NavHostController) {
                                 painter = painterResource(iconFacebook),
                                 contentDescription = iconFacebook.contentDescription
                             )
-                            Text(text = "Facebook", style = MaterialTheme.typography.bodyLarge)
+                            Text(
+                                text = ResourcePath.String.facebook,
+                                style = MaterialTheme.typography.bodyLarge
+                            )
                         }
                     }
                     Spacer(modifier = Modifier.width(10.dp))
@@ -233,17 +241,20 @@ fun LoginScreen(navHostController: NavHostController) {
                                 painter = painterResource(iconGoogle),
                                 contentDescription = iconGoogle.contentDescription
                             )
-                            Text(text = "Google", style = MaterialTheme.typography.bodyLarge)
+                            Text(
+                                text = ResourcePath.String.google,
+                                style = MaterialTheme.typography.bodyLarge
+                            )
                         }
 
                     }
                 }
 
                 Text(textDecoration = TextDecoration.Underline,
-                    text = "Forgot Your Password?",
+                    text = ResourcePath.String.forgetYourPassword,
                     style = MaterialTheme.typography.bodyLarge.copy(color = MaterialTheme.colorScheme.primary),
                     modifier = Modifier.clickable {
-
+                        navHostController.navigate(Screens.ForgetPassword)
                     })
             }
         }
@@ -261,7 +272,10 @@ fun LoginScreen(navHostController: NavHostController) {
                     horizontalArrangement = Arrangement.Start
                 ) {
                     Checkbox(checked = keepMeSignIn, onCheckedChange = { keepMeSignIn = it })
-                    Text(text = "Keep Me Signed In", style = MaterialTheme.typography.labelSmall)
+                    Text(
+                        text = ResourcePath.String.keepMeSignIn,
+                        style = MaterialTheme.typography.labelSmall
+                    )
                 }
                 Row(
                     modifier = Modifier.clickable {
@@ -273,7 +287,7 @@ fun LoginScreen(navHostController: NavHostController) {
                 ) {
                     Checkbox(checked = emailMe, onCheckedChange = { emailMe = it })
                     Text(
-                        text = "Email Me About Special Pricing",
+                        text = ResourcePath.String.emailSpecialPricing,
                         style = MaterialTheme.typography.labelSmall
                     )
                 }
@@ -282,15 +296,26 @@ fun LoginScreen(navHostController: NavHostController) {
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        NinjaButton(text = "Login".takeIf { isLogin } ?: "Create Account", onClick = {
-            navHostController.navigate(route = Screens.Onboarding)
+        NinjaButton(text = ResourcePath.String.login.takeIf { isLogin }
+            ?: ResourcePath.String.createAccount, onClick = {
+
+            val (route, popInclusive) = if (isLogin) {
+                Screens.Home to true
+            } else {
+                Screens.Onboarding to false
+            }
+
+            navHostController.navigate(
+                route = route, popInclusive = popInclusive
+            )
         })
 
         if (isLogin) {
             Spacer(modifier = Modifier.height(10.dp))
         }
         Text(textDecoration = TextDecoration.Underline,
-            text = "Create an account!".takeIf { isLogin } ?: "Already have an account?",
+            text = ResourcePath.String.createAccountButton.takeIf { isLogin }
+                ?: ResourcePath.String.alreadyHaveAnAccount,
             style = MaterialTheme.typography.bodyLarge.copy(color = MaterialTheme.colorScheme.primary),
             modifier = Modifier.clickable {
                 isLogin = !isLogin

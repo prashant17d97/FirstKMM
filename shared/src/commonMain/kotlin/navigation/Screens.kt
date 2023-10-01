@@ -6,6 +6,10 @@ const val welcome = "Welcome"
 const val home = "Welcome"
 const val onboarding = "Onboarding"
 const val loginScreen = "LoginScreen"
+const val forgetPassword = "ForgetPassword"
+const val otpVerification = "OTPVerification"
+const val resetPassword = "ResetPassword"
+const val congratsScreen = "CongratsScreen"
 
 sealed class Screens(
     var title: String,
@@ -18,4 +22,8 @@ sealed class Screens(
     data object Home : Screens(title = home)
     data object Onboarding : Screens(title = onboarding)
     data object LoginScreen : Screens(title = loginScreen)
+    data object ForgetPassword : Screens(title = forgetPassword)
+    data object OTPVerification : Screens(title = otpVerification)
+    data object ResetPassword : Screens(title = resetPassword)
+    data object CongratsScreen : Screens(title = congratsScreen)
 }

@@ -26,6 +26,11 @@ import core.NavHostController
 import core.ResourcePath.Drawable.contentDescription
 import core.ResourcePath.Drawable.welcomeFirst
 import core.ResourcePath.Drawable.welcomeSecond
+import core.ResourcePath.String.next
+import core.ResourcePath.String.welcomeHeadingFirst
+import core.ResourcePath.String.welcomeHeadingSecond
+import core.ResourcePath.String.welcomeLabelFirst
+import core.ResourcePath.String.welcomeLabelSecond
 import datamodel.WelcomeModel
 import kotlinx.coroutines.launch
 import navigation.Screens
@@ -40,13 +45,13 @@ fun Welcome(navHostController: NavHostController) {
     val coroutineScope = rememberCoroutineScope()
     val welcomeModel = listOf(
         WelcomeModel(
-            heading = "Find your Comfort Food here",
-            label = "Here You Can find a chef or dish for every taste and color. Enjoy!",
+            heading = welcomeHeadingFirst,
+            label = welcomeLabelFirst,
             iconString = welcomeFirst,
         ),
         WelcomeModel(
-            heading = "Food Ninja is Where Your Comfort Food Lives",
-            label = "Enjoy a fast and smooth food delivery at your doorstep",
+            heading = welcomeHeadingSecond,
+            label = welcomeLabelSecond,
             iconString = welcomeSecond,
         ),
     )
@@ -67,7 +72,7 @@ fun Welcome(navHostController: NavHostController) {
             WelcomeItem(welcomeModel[it])
         }
 
-        NinjaButton(text = "Next", onClick = {
+        NinjaButton(text = next, onClick = {
             coroutineScope.launch {
                 if (pagerState.currentPage != welcomeModel.size - 1) {
                     pagerState.animateScrollToPage(page = pagerState.currentPage + 1)

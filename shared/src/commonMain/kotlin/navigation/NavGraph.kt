@@ -12,9 +12,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import core.NavHostController
+import presentation.CongratsScreen
+import presentation.ForgetPassword
 import presentation.Home
 import presentation.LoginScreen
+import presentation.OTPVerification
 import presentation.Onboarding
+import presentation.ResetPassword
 import presentation.Splash
 import presentation.Welcome
 
@@ -43,6 +47,10 @@ fun NavGraph(navHostController: NavHostController) {
             Screens.Welcome -> Welcome(navHostController)
             Screens.LoginScreen -> LoginScreen(navHostController)
             Screens.Onboarding -> Onboarding(navHostController)
+            Screens.ForgetPassword -> ForgetPassword(navHostController)
+            Screens.OTPVerification -> OTPVerification(navHostController)
+            Screens.ResetPassword -> ResetPassword(navHostController)
+            Screens.CongratsScreen -> CongratsScreen(navHostController)
             Screens.Home -> Home(navHostController)
         }
     }
