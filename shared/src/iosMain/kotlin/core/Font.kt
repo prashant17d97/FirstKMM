@@ -38,10 +38,10 @@ private val cache: MutableMap<String, Font> = mutableMapOf()
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
-actual fun font(name: String, res: String, fontWeight: FontWeight, fontStyle: FontStyle): Font {
+actual fun font(res: String, fontWeight: FontWeight, fontStyle: FontStyle): Font {
     return cache.getOrPut(res) {
         val byteArray = runBlocking {
-            resource("font/$res.ttf").readBytes()
+            resource(res).readBytes()
         }
         androidx.compose.ui.text.platform.Font(res, byteArray, fontWeight, fontStyle)
     }

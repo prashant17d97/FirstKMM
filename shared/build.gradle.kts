@@ -18,6 +18,7 @@ kotlin {
         }
     }
 
+
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -43,14 +44,6 @@ kotlin {
                     implementation(core)
                     implementation(navigation)
                 }
-
-                // Compose
-                with(compose) {
-                    implementation(ui)
-                    implementation(foundation)
-                    implementation(material3)
-                    implementation(runtime)
-                }
             }
         }
         val androidMain by getting {
@@ -58,7 +51,6 @@ kotlin {
                 api("androidx.activity:activity-compose:1.7.2")
                 api("androidx.appcompat:appcompat:1.6.1")
                 api("androidx.core:core-ktx:1.12.0")
-                api("androidx.compose.ui:ui-tooling-preview:1.5.1")
             }
         }
         val iosX64Main by getting
@@ -97,6 +89,12 @@ object Dependencies {
     object Kotlinx {
         const val coroutines =
             "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.Kotlinx.kotlinxVersion}"
+    }
+
+    object Compose {
+        const val navigation =
+            "androidx.navigation:navigation-compose:${Versions.composeNavigation}"
+
     }
 
     object Preview {
@@ -141,6 +139,7 @@ object Dependencies {
         }
 
         const val composeVersion = "1.5.1"
+        const val composeNavigation = "2.7.2"
 
     }
 }

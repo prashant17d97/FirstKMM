@@ -27,4 +27,4 @@ expect fun GetFont(
 
 
 @Composable
-expect fun font(name: String, res: String, fontWeight: FontWeight, fontStyle: FontStyle): Font
+expect fun font(res: String, fontWeight: FontWeight, fontStyle: FontStyle): Font

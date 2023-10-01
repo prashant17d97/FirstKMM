@@ -4,48 +4,49 @@ import androidx.compose.material3.Typography
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import core.ResourcePath.Font.VigaRegularFont
+import core.font
+
 
 @Composable
-fun fontFamily() = FontFamily.Default/*FontFamily(
+fun fontFamily(): FontFamily {
+
+    return /*FontFamily.Default*/FontFamily(
     font(
-        name = VigaRegularName,
         res = VigaRegularFont,
         fontWeight = FontWeight.Normal,
         fontStyle = FontStyle.Normal
     ),
     font(
-        name = VigaRegularName,
         res = VigaRegularFont,
         fontWeight = FontWeight.SemiBold,
         fontStyle = FontStyle.Normal
     ),
     font(
-        name = VigaRegularName,
         res = VigaRegularFont,
         fontWeight = FontWeight.Bold,
         fontStyle = FontStyle.Normal
     ),
     font(
-        name = VigaRegularName,
         res = VigaRegularFont,
         fontWeight = FontWeight.ExtraBold,
         fontStyle = FontStyle.Normal
     ),
     font(
-        name = VigaRegularName,
         res = VigaRegularFont,
         fontWeight = FontWeight.Light,
         fontStyle = FontStyle.Normal
     ),
     font(
-        name = VigaRegularName,
         res = VigaRegularFont,
         fontWeight = FontWeight.ExtraLight,
         fontStyle = FontStyle.Normal
     )
-)*/
+)
+}
 
 
 @Composable
