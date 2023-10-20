@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Checkbox
@@ -52,6 +51,7 @@ import navigation.Screens
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 import presentation.CommonElements.NinjaButton
+import presentation.CommonElements.shadowElevation
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
@@ -108,13 +108,17 @@ fun LoginScreen(navHostController: NavHostController) {
                         keyboardType = KeyboardType.Text,
                         imeAction = ImeAction.Next
                     ),
-                    modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(15.dp),
+                    modifier = Modifier.fillMaxWidth().shadowElevation,
+                    shape = CommonElements.cornerShape,
                     colors = TextFieldDefaults.colors(
                         focusedIndicatorColor = Color.Transparent,
                         disabledIndicatorColor = Color.Transparent,
                         errorIndicatorColor = Color.Transparent,
                         unfocusedIndicatorColor = Color.Transparent,
+                        unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+                        focusedContainerColor = MaterialTheme.colorScheme.surface,
+                        disabledContainerColor = MaterialTheme.colorScheme.surface,
+                        errorContainerColor = MaterialTheme.colorScheme.surface,
 
                         ),
                     value = name,
@@ -134,13 +138,17 @@ fun LoginScreen(navHostController: NavHostController) {
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Email, imeAction = ImeAction.Next
                 ),
-                modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(15.dp),
+                modifier = Modifier.fillMaxWidth().shadowElevation,
+                shape = CommonElements.cornerShape,
                 colors = TextFieldDefaults.colors(
                     focusedIndicatorColor = Color.Transparent,
                     disabledIndicatorColor = Color.Transparent,
                     errorIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
+                    unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+                    focusedContainerColor = MaterialTheme.colorScheme.surface,
+                    disabledContainerColor = MaterialTheme.colorScheme.surface,
+                    errorContainerColor = MaterialTheme.colorScheme.surface,
                 ),
                 value = email,
                 onValueChange = {
@@ -174,9 +182,13 @@ fun LoginScreen(navHostController: NavHostController) {
                     disabledIndicatorColor = Color.Transparent,
                     errorIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
+                    unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+                    focusedContainerColor = MaterialTheme.colorScheme.surface,
+                    disabledContainerColor = MaterialTheme.colorScheme.surface,
+                    errorContainerColor = MaterialTheme.colorScheme.surface,
                 ),
-                modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(15.dp),
+                modifier = Modifier.fillMaxWidth().shadowElevation,
+                shape = CommonElements.cornerShape,
                 value = password,
                 onValueChange = {
                     password = it
@@ -202,9 +214,9 @@ fun LoginScreen(navHostController: NavHostController) {
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Box(
-                        modifier = Modifier.background(
-                            color = MaterialTheme.colorScheme.surfaceVariant,
-                            shape = RoundedCornerShape(15.dp)
+                        modifier = Modifier.shadowElevation.background(
+                            color = MaterialTheme.colorScheme.surface,
+                            shape = CommonElements.cornerShape
                         ).weight(1f).height(55.dp),
                         contentAlignment = Alignment.Center,
                     ) {
@@ -226,9 +238,9 @@ fun LoginScreen(navHostController: NavHostController) {
                     }
                     Spacer(modifier = Modifier.width(10.dp))
                     Box(
-                        modifier = Modifier.background(
-                            color = MaterialTheme.colorScheme.surfaceVariant,
-                            shape = RoundedCornerShape(15.dp)
+                        modifier = Modifier.shadowElevation.background(
+                            color = MaterialTheme.colorScheme.surface,
+                            shape = CommonElements.cornerShape
                         ).weight(1f).height(55.dp), contentAlignment = Alignment.Center
                     ) {
                         Row(
@@ -254,7 +266,7 @@ fun LoginScreen(navHostController: NavHostController) {
                     text = ResourcePath.String.forgetYourPassword,
                     style = MaterialTheme.typography.bodyLarge.copy(color = MaterialTheme.colorScheme.primary),
                     modifier = Modifier.clickable {
-                        navHostController.navigate(Screens.ForgetPassword)
+                        navHostController.navigate(Screens.ForgetPassword,)
                     })
             }
         }
@@ -302,11 +314,11 @@ fun LoginScreen(navHostController: NavHostController) {
             val (route, popInclusive) = if (isLogin) {
                 Screens.Home to true
             } else {
-                Screens.Onboarding to false
+                Screens.SignUpProcess to false
             }
 
             navHostController.navigate(
-                route = route, popInclusive = popInclusive
+                route = route, popInclusive = popInclusive,
             )
         })
 

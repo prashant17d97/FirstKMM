@@ -75,7 +75,7 @@ fun CongratsScreen(navHostController: NavHostController) {
         ) {
             CommonElements.NinjaButton(text = ResourcePath.String.next, onClick = {
                 navHostController.navigate(
-                    route = Screens.LoginScreen, popInclusive = true
+                    route = Screens.LoginScreen, popInclusive = true,
                 )
             })
             Spacer(modifier = Modifier.height(15.dp))

@@ -8,11 +8,13 @@ interface NavHostController {
     val backStackEntry: StateFlow<List<Screens>>
     val isPushingUp: StateFlow<Boolean>
     val canExit: StateFlow<Boolean>
+    val getArguments: StateFlow<String>
 
     fun navigate(
         route: Screens,
         popInclusive: Boolean = false,
-        navigatingForward: Boolean = true
+        navigatingForward: Boolean = true,
+        argumentString: String? = null
     )
 
     fun popUp()

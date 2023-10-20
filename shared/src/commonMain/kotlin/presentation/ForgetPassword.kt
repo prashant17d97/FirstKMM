@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -93,7 +92,7 @@ fun ForgetPassword(navHostController: NavHostController) {
             horizontalAlignment = Alignment.Start,
         ) {
             NinjaButton(text = ResourcePath.String.next, onClick = {
-                navHostController.navigate(route = Screens.OTPVerification)
+                navHostController.navigate(route = Screens.OTPVerification,)
             })
             Spacer(modifier = Modifier.height(15.dp))
         }
@@ -109,8 +108,8 @@ private fun PasswordResetOption(viaSource: RestViaOption, onClick: () -> Unit) {
 
     Row(
         modifier = Modifier.fillMaxWidth().background(
-            color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f),
-            shape = RoundedCornerShape(15.dp)
+            color = MaterialTheme.colorScheme.surface.copy(alpha = 0.5f),
+            shape = CommonElements.cornerShape
         ).padding(15.dp).clickable { onClick() },
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(
@@ -128,35 +127,22 @@ private fun PasswordResetOption(viaSource: RestViaOption, onClick: () -> Unit) {
                 5.dp, alignment = Alignment.CenterVertically
             ), horizontalAlignment = Alignment.Start
         ) {
-            when (viaSource) {
-                RestViaOption.SMS -> {
-                    Text(
-                        text = viaSource.viaOption,
-                        style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.ExtraLight),
-                        lineHeight = 20.sp,
-                    )
-                    Text(
-                        text = "**** **** ${viaSource.sourceEndpoint}",
-                        style = MaterialTheme.typography.headlineSmall,
-                        textAlign = TextAlign.Center,
-                        lineHeight = 25.sp,
-                    )
-                }
-
-                RestViaOption.Email -> {
-                    Text(
-                        text = viaSource.viaOption,
-                        style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.ExtraLight),
-                        lineHeight = 20.sp,
-                    )
-                    Text(
-                        text = "**** ${viaSource.sourceEndpoint}",
-                        style = MaterialTheme.typography.headlineSmall,
-                        textAlign = TextAlign.Center,
-                        lineHeight = 25.sp,
-                    )
-                }
+            val (viaOption, sourceEndpoint) = when (viaSource) {
+                RestViaOption.SMS -> viaSource.viaOption to viaSource.sourceEndpoint
+                RestViaOption.Email -> viaSource.viaOption to viaSource.sourceEndpoint
             }
+
+            Text(
+                text = viaOption,
+                style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.ExtraLight),
+                lineHeight = 20.sp,
+            )
+            Text(
+                text = "**** **** $sourceEndpoint",
+                style = MaterialTheme.typography.headlineSmall,
+                textAlign = TextAlign.Center,
+                lineHeight = 25.sp,
+            )
         }
     }
 }

@@ -14,6 +14,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Brush.Companion.horizontalGradient
 import androidx.compose.ui.graphics.Color
@@ -38,7 +40,7 @@ object CommonElements {
             colors = ButtonDefaults.buttonColors(
                 Color.Transparent
             ),
-            shape = RoundedCornerShape(15.dp),
+            shape = cornerShape,
             contentPadding = PaddingValues(),
             onClick = onClick
         )
@@ -64,4 +66,14 @@ object CommonElements {
             }
         }
     }
+
+
+    val Modifier.shadowElevation: Modifier
+        get() = this.shadow(elevation = 10.dp, ambientColor = ambientColor)
+    val Modifier.globalClip: Modifier
+        get() = this.clip(shape = cornerShape)
+
+    val cornerShape = RoundedCornerShape(15.dp)
+
+    val ambientColor = Color(0x125A6CEA)
 }

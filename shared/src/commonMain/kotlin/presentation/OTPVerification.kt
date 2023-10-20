@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.MaterialTheme
@@ -23,6 +22,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.font.FontWeight
@@ -34,11 +34,13 @@ import androidx.compose.ui.unit.sp
 import core.NavHostController
 import core.ResourcePath
 import core.ResourcePath.Drawable.contentDescription
+import core.ResourcePath.Drawable.iconBgSecond
 import core.Size
 import navigation.Screens
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 import presentation.CommonElements.NinjaButton
+import presentation.CommonElements.shadowElevation
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
@@ -50,14 +52,16 @@ fun OTPVerification(navHostController: NavHostController) {
     }
 
     GradiantWithImageColumn(
+        image = iconBgSecond,
         verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally,
-        colors = listOf(
-            Color.Transparent,
-            MaterialTheme.colorScheme.background,
-            MaterialTheme.colorScheme.background,
-            MaterialTheme.colorScheme.background,
-            MaterialTheme.colorScheme.background
+        brush = Brush.linearGradient(
+            colors = listOf(
+                Color.Transparent,
+                MaterialTheme.colorScheme.background,
+                MaterialTheme.colorScheme.background,
+                MaterialTheme.colorScheme.background,
+            )
         )
     ) {
         Column(
@@ -91,8 +95,7 @@ fun OTPVerification(navHostController: NavHostController) {
             )
 
             Spacer(modifier = Modifier.height(10.dp))
-            TextField(
-                placeholder = { Text(text = ResourcePath.String.otp) },
+            TextField(placeholder = { Text(text = ResourcePath.String.otp) },
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Number, imeAction = ImeAction.Done
@@ -105,13 +108,17 @@ fun OTPVerification(navHostController: NavHostController) {
                     disabledIndicatorColor = Color.Transparent,
                     errorIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
+                    unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+                    focusedContainerColor = MaterialTheme.colorScheme.surface,
+                    disabledContainerColor = MaterialTheme.colorScheme.surface,
+                    errorContainerColor = MaterialTheme.colorScheme.surface,
                 ),
                 textStyle = MaterialTheme.typography.headlineLarge.copy(
                     textAlign = TextAlign.Justify,
                     lineHeight = 35.sp,
                 ),
-                modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(15.dp),
+                modifier = Modifier.fillMaxWidth().shadowElevation,
+                shape = CommonElements.cornerShape,
                 value = otp,
                 onValueChange = {
                     if (otp.length < 4) {
@@ -130,7 +137,7 @@ fun OTPVerification(navHostController: NavHostController) {
             horizontalAlignment = Alignment.Start,
         ) {
             NinjaButton(text = ResourcePath.String.next, onClick = {
-                navHostController.navigate(route = Screens.ResetPassword)
+                navHostController.navigate(route = Screens.ResetPassword,)
             })
             Spacer(modifier = Modifier.height(15.dp))
         }

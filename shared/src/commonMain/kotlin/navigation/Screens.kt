@@ -10,6 +10,7 @@ const val forgetPassword = "ForgetPassword"
 const val otpVerification = "OTPVerification"
 const val resetPassword = "ResetPassword"
 const val congratsScreen = "CongratsScreen"
+const val signUpProcess = "SignUpProcess"
 
 sealed class Screens(
     var title: String,
@@ -26,4 +27,5 @@ sealed class Screens(
     data object OTPVerification : Screens(title = otpVerification)
     data object ResetPassword : Screens(title = resetPassword)
     data object CongratsScreen : Screens(title = congratsScreen)
+    data object SignUpProcess : Screens(title = signUpProcess)
 }

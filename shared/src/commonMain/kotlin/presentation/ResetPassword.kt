@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.MaterialTheme
@@ -40,6 +39,7 @@ import navigation.Screens
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 import presentation.CommonElements.NinjaButton
+import presentation.CommonElements.shadowElevation
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
@@ -125,9 +125,13 @@ fun ResetPassword(navHostController: NavHostController) {
                     disabledIndicatorColor = Color.Transparent,
                     errorIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
+                    unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+                    focusedContainerColor = MaterialTheme.colorScheme.surface,
+                    disabledContainerColor = MaterialTheme.colorScheme.surface,
+                    errorContainerColor = MaterialTheme.colorScheme.surface,
                 ),
-                modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(15.dp),
+                modifier = Modifier.fillMaxWidth().shadowElevation,
+                shape = CommonElements.cornerShape,
                 value = password,
                 onValueChange = {
                     password = it
@@ -157,9 +161,13 @@ fun ResetPassword(navHostController: NavHostController) {
                     disabledIndicatorColor = Color.Transparent,
                     errorIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
+                    unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+                    focusedContainerColor = MaterialTheme.colorScheme.surface,
+                    disabledContainerColor = MaterialTheme.colorScheme.surface,
+                    errorContainerColor = MaterialTheme.colorScheme.surface,
                 ),
-                modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(15.dp),
+                modifier = Modifier.fillMaxWidth().shadowElevation,
+                shape = CommonElements.cornerShape,
                 value = confirmPassword,
                 onValueChange = {
                     confirmPassword = it
@@ -174,7 +182,7 @@ fun ResetPassword(navHostController: NavHostController) {
             horizontalAlignment = Alignment.Start,
         ) {
             NinjaButton(text = ResourcePath.String.next, onClick = {
-                navHostController.navigate(route = Screens.CongratsScreen)
+                navHostController.navigate(route = Screens.CongratsScreen,)
             })
             Spacer(modifier = Modifier.height(15.dp))
         }

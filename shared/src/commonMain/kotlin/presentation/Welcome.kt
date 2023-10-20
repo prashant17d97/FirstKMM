@@ -77,7 +77,7 @@ fun Welcome(navHostController: NavHostController) {
                 if (pagerState.currentPage != welcomeModel.size - 1) {
                     pagerState.animateScrollToPage(page = pagerState.currentPage + 1)
                 } else {
-                    navHostController.navigate(route = Screens.LoginScreen, popInclusive = true)
+                    navHostController.navigate(route = Screens.LoginScreen, popInclusive = true,)
                 }
             }
 

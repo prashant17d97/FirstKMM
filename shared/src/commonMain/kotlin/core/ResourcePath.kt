@@ -20,6 +20,14 @@ class ResourcePath {
         const val iconMessage = "drawable/icon_message.xml"
         const val iconResetOptionMail = "drawable/icon_reset_option_email.xml"
         const val iconSuccess = "drawable/icon_success.xml"
+        const val iconBgSecond = "drawable/icon_otp_bg.xml"
+        const val iconPaypal = "drawable/icon_paypal.xml"
+        const val iconPayoneer = "drawable/icon_payoneer.xml"
+        const val iconVisa = "drawable/icon_visa.xml"
+        const val iconCamera = "drawable/icon_camera.xml"
+        const val iconGallery = "drawable/icon_gallery.xml"
+        const val iconClose = "drawable/icon_close.xml"
+        const val iconPin = "drawable/icon_pin.xml"
 
 
         val kotlin.String.contentDescription: kotlin.String
@@ -54,7 +62,7 @@ class ResourcePath {
         const val welcomeLabelFirst =
             "Here You Can find a chef or dish for every taste and color. Enjoy!"
         const val welcomeHeadingSecond = "Food Ninja is Where Your Comfort Food Lives"
-        const val welcomeLabelSecond = "Food Ninja is Where Your Comfort Food Lives"
+        const val welcomeLabelSecond = "Enjoy a fast and smooth food delivery at\nyour doorstep"
         const val next = "Next"
         const val login = "Login"
         const val createAccount = "Create an Account"
@@ -63,6 +71,9 @@ class ResourcePath {
         const val loginToAccount = "Login To Your Account"
         const val signUpFree = "Sign Up For Free"
         const val name = "Name"
+        const val firstName = "First Name"
+        const val lastname = "LastName"
+        const val number = "Number"
         const val emailSpecialPricing = "Email Me About Special Pricing"
         const val email = "Email"
         const val keepMeSignIn = "Email"
@@ -84,8 +95,32 @@ class ResourcePath {
 
 
         //Congrats Screen
-        const val congrats = "Congrats"
+        const val congrats = "Congrats!"
         const val resetSuccessful = "Password reset successfully"
+
+
+        //SignUpProcess
+
+        const val bioHeading = "Fill in your bio to get\nstarted"
+        const val bioSubTitle = "This data will be displayed in your account\nprofile for security"
+
+        const val paymentHeading = "Payment Method"
+        const val paymentSubTitle = "This data will be displayed in your account\nprofile for security"
+
+        const val uploadPhotoHeading = "Upload Your Photo\nProfile"
+        const val uploadPhotoSubTitle = "This data will be displayed in your account\nprofile for security"
+
+        const val previewPhotoHeading = "Preview Your Photo\nProfile"
+        const val previewPhotoSubTitle = "This data will be displayed in your account\nprofile for security"
+
+        const val locationHeading = "Set Your Location "
+        const val locationSubTitle = "This data will be displayed in your account\nprofile for security"
+
+        const val takePhoto = "Take Photo"
+        const val fromGallery = "From Gallery"
+
+        const val yourLocation = "Your Location"
+        const val setLocation = "Set Location"
     }
 
 

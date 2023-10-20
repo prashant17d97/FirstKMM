@@ -39,7 +39,7 @@ fun Splash(navHostController: NavHostController) {
         delay(1000)
         navHostController.navigate(
             route = Screens.Welcome,
-            popInclusive = true
+            popInclusive = true,
         )
 
     }
@@ -93,6 +93,9 @@ fun GradiantWithImageColumn(
         MaterialTheme.colorScheme.background,
         MaterialTheme.colorScheme.background
     ),
+    brush: Brush = Brush.verticalGradient(
+        colors = colors
+    ),
     content: @Composable ColumnScope.() -> Unit,
 ) {
     Box(
@@ -109,9 +112,7 @@ fun GradiantWithImageColumn(
             modifier = modifier
                 .fillMaxSize()
                 .background(
-                    brush = Brush.verticalGradient(
-                        colors = colors
-                    )
+                    brush = brush
                 )
                 .padding(horizontal, vertical),
 

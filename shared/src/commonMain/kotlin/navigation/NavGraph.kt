@@ -21,6 +21,7 @@ import presentation.Onboarding
 import presentation.ResetPassword
 import presentation.Splash
 import presentation.Welcome
+import presentation.signup.SignUpProcess
 
 @Composable
 fun NavGraph(navHostController: NavHostController) {
@@ -51,6 +52,7 @@ fun NavGraph(navHostController: NavHostController) {
             Screens.OTPVerification -> OTPVerification(navHostController)
             Screens.ResetPassword -> ResetPassword(navHostController)
             Screens.CongratsScreen -> CongratsScreen(navHostController)
+            Screens.SignUpProcess -> SignUpProcess(navHostController)
             Screens.Home -> Home(navHostController)
         }
     }

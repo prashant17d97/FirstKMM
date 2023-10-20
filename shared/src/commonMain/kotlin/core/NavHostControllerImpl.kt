@@ -24,9 +24,17 @@ internal class NavHostControllerImpl(startDestination: Screens) : NavHostControl
     private val _currentStack: MutableStateFlow<Screens> = MutableStateFlow(startDestination)
     override val currentStack: StateFlow<Screens> = _currentStack
 
+    private val _getArguments: MutableStateFlow<String> = MutableStateFlow("")
+    override val getArguments: StateFlow<String> = _getArguments
+
     private var stackEntry: MutableList<Screens> = mutableListOf(startDestination)
 
-    override fun navigate(route: Screens, popInclusive: Boolean, navigatingForward: Boolean) {
+    override fun navigate(
+        route: Screens,
+        popInclusive: Boolean,
+        navigatingForward: Boolean,
+        argumentString: String?
+    ) {
         _isPushingUp.tryEmit(navigatingForward)
         if (popInclusive) {
             stackEntry.clear()
@@ -34,6 +42,8 @@ internal class NavHostControllerImpl(startDestination: Screens) : NavHostControl
         stackEntry.add(route)
         _currentStack.tryEmit(route)
         _backStackEntry.tryEmit(stackEntry.toList())
+
+        argumentString?.let { _getArguments.tryEmit(it) }
     }
 
     override fun popUp() {
